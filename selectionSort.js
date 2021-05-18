@@ -11,6 +11,10 @@
 // Repeat this with the next element until the the array is sorted
 
 let selectionSort = (arr) => {
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]
+  }
+
   for (let i = 0; i < arr.length; i++) {
     let minVal = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -18,12 +22,9 @@ let selectionSort = (arr) => {
         minVal = j;
       }
     }
-    if (i !== minVal) {
-      let temp = arr[i];
-      arr[i] = arr[minVal];
-      arr[minVal] = temp;
-    }
+    if (i !== minVal) swap(arr, i, minVal)
   }
+  
   console.log(arr)
   return arr;
 }
