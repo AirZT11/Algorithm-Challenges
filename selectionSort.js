@@ -10,13 +10,24 @@
 //    This is so you can swap the indices 
 // Repeat this with the next element until the the array is sorted
 
-let selectionSort = () => {
-
+let selectionSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    let minVal = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[minVal] > arr[j]) {
+        minVal = j;
+      }
+    }
+    if (i !== minVal) {
+      let temp = arr[i];
+      arr[i] = arr[minVal];
+      arr[minVal] = temp;
+    }
+  }
+  console.log(arr)
+  return arr;
 }
 
-let swap = (arr, idx1, idx2) => {
-  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]
-}
 
 let arr = [3, 2, 13, 6, 35, 1, 24]
 selectionSort(arr)
